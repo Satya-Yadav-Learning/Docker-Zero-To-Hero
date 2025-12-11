@@ -15,7 +15,7 @@ ________________________________________
 2. Add the Official Docker CE Repository
 ```
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-``
+```
 Explanation:
 This enables access to the official Docker repository, ensuring the installation of the latest stable Docker packages.
 ________________________________________
