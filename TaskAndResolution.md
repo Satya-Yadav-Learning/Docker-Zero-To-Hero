@@ -26,7 +26,7 @@ docker commit captures the current state of the container as a new image.
 
 ubuntu_latest → source container.
 
-demo:nautilus → new image name:tag created from it.
+demo:natural → new image name:tag created from it.
 
 3. Verify the Newly Created Image
 ```
