@@ -163,15 +163,15 @@ Verified connectivity using ping and curl
 # Macvlan Network Architecture Diagram
 
                          ┌──────────────────────────────────────────┐
-                         │        App Server 3 (stapp03)             │
-                         │        Host OS: CentOS Stream 9           │
+                         │        App Server                        │
+                         │        Host OS: CentOS Stream 9          │
                          └──────────────────────────────────────────┘
                                              │
                                              │  Physical Network
                                              ▼
                  ┌─────────────────────────────────────────────────────────────┐
                  │                         eth0                                │
-                 │                IP: 172.16.238.12/24                          │
+                 │                IP: 172.16.238.12/24                         │
                  │         (Primary host interface used as macvlan parent)     │
                  └─────────────────────────────────────────────────────────────┘
                                              │
@@ -186,7 +186,7 @@ Verified connectivity using ping and curl
                                              │
                               ┌────────────────────────────────┐
                               │   Docker macvlan network:      │
-                              │             beta                │
+                              │             beta               │
                               │ Subnet:     192.168.0.0/24     │
                               │ IP Range:   192.168.0.0/24     │
                               │ Gateway:    192.168.0.1        │
@@ -196,10 +196,10 @@ Verified connectivity using ping and curl
                                              ▼
                      ┌────────────────────────────────────────────┐
                      │ Docker Container (macvlan endpoint)        │
-                     │   Name: test-macvlan-static               │
-                     │   Image: nginx:alpine                     │
-                     │   IP: 192.168.0.50/24                     │
-                     │   MAC: 02:42:c0:a8:00:32                  │
+                     │   Name: test-macvlan-static                │
+                     │   Image: nginx:alpine                      │
+                     │   IP: 192.168.0.50/24                      │
+                     │   MAC: 02:42:c0:a8:00:32                   │
                      └────────────────────────────────────────────┘
                                              │
                                              │  HTTP Test
