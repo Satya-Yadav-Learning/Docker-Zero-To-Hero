@@ -1,7 +1,7 @@
 
 ## Task Overview
 
-The Dockerfile located under `/opt/docker` contained invalid instructions causing the image build to fail.
+Dockerfile located under `/opt/docker` contained invalid instructions causing the image build to fail.
 
 ### Requirements
 
@@ -110,18 +110,55 @@ COPY html/index.html /usr/local/apache2/htdocs/
 docker build -t test.image .
 ```
 
-### Build Output (Summary)
+### Build Output (Full)
 
 ```text
+[+] Building 194.9s (13/13) FINISHED                                               docker:default
+ => [internal] load build definition from Dockerfile                                         0.0s
+ => => transferring dockerfile: 557B                                                         0.0s
+ => [internal] load metadata for docker.io/library/httpd:2.4.43                            120.9s
+ => [internal] load .dockerignore                                                            0.0s
+ => => transferring context: 2B                                                              0.0s
+ => [internal] load build context                                                            0.0s
+ => => transferring context: 3.19kB                                                          0.0s
+ => [1/8] FROM docker.io/library/httpd:2.4.43@sha256:cd88fee4eab37f0d8cd04b06ef97285ca981c  63.9s
+ => => resolve docker.io/library/httpd:2.4.43@sha256:cd88fee4eab37f0d8cd04b06ef97285ca981c2  0.0s
+ => => sha256:f1455599cc2e008a4555f14451e590f071371d371a3b87790651a367357d2 7.35kB / 7.35kB  0.0s
+ => => sha256:bf59529304463f62efa7179fa1a32718a611528cc4ce9f30c0d1bbc672 27.09MB / 27.09MB  30.5s
+ => => sha256:3d3fecf6569b94e406086a2b68a7c8930254490b45c0de4911f497ea9cf0876c 146B / 146B  30.6s
+ => => sha256:b5fc3125d9129e4cdd43f496195cc8f39d43e9bad171044ecb5b8f82b2 10.37MB / 10.37MB  30.9s
+ => => sha256:cd88fee4eab37f0d8cd04b06ef97285ca981c27b4d685f0321e65c5d4fd49 1.86kB / 1.86kB  0.0s
+ => => sha256:53729354a74c9c146aa8726a8906e833755066ada1a478782f4dfb2ea6994 1.37kB / 1.37kB  0.0s
+ => => extracting sha256:bf59529304463f62efa7179fa1a32718a611528cc4ce9f30c0d1bbc6724ec3fb    2.4s
+ => => sha256:3c61041685c0f65e0b375bae6ae6bdeab9b6c20960dbef5e30201db18a 24.47MB / 24.47MB  61.2s
+ => => sha256:34b7e9053f76ca3c9dc574c5034679769256a596008efbfbff1d1b1546600841 298B / 298B  61.3s
+ => => extracting sha256:3d3fecf6569b94e406086a2b68a7c8930254490b45c0de4911f497ea9cf0876c    0.4s
+ => => extracting sha256:b5fc3125d9129e4cdd43f496195cc8f39d43e9bad171044ecb5b8f82b2f6e30d    1.0s
+ => => extracting sha256:3c61041685c0f65e0b375bae6ae6bdeab9b6c20960dbef5e30201db18a4e6d4a    1.3s
+ => => extracting sha256:34b7e9053f76ca3c9dc574c5034679769256a596008efbfbff1d1b1546600841    0.8s
+ => [2/8] RUN sed -i "s/Listen 80/Listen 8080/g" /usr/local/apache2/conf/httpd.conf          1.4s
+ => [3/8] RUN sed -i '/LoadModule\ ssl_module modules\/mod_ssl.so/s/^#//g' conf/httpd.conf   1.3s
+ => [4/8] RUN sed -i '/LoadModule\ socache_shmcb_module modules\/mod_socache_shmcb.so/s/^#//g' conf/httpd.conf  1.3s
+ => [5/8] RUN sed -i '/Include\ conf\/extra\/httpd-ssl.conf/s/^#//g' conf/httpd.conf         1.4s
+ => [6/8] COPY certs/server.crt /usr/local/apache2/conf/server.crt                           0.8s
+ => [7/8] COPY certs/server.key /usr/local/apache2/conf/server.key                           0.8s
+ => [8/8] COPY html/index.html /usr/local/apache2/htdocs/                                    0.9s
+ => exporting to image                                                                       2.2s
+ => => exporting layers                                                                      2.2s
+ => => writing image sha256:b8e8fe53ccd5e945c2116b9e2266935cadcbb01e6f19b076ccd29c3493d244b  0.0s
+ => => naming to docker.io/library/test.image
+```
+
+text
 [+] Building FINISHED
 => naming to docker.io/library/test.image
-```
+
+````
 
 ### Verify Image Creation
-
 ```bash
 docker images
-```
+````
 
 ### Output
 
@@ -139,8 +176,4 @@ test.image   latest    b8e8fe53ccd5   12 minutes ago   166MB
 * No base image or data changes performed
 
 ---
-
-## Task Closure Statement
-
-**The Dockerfile issues were resolved and the Docker image was built successfully as per the requirements.**
 
